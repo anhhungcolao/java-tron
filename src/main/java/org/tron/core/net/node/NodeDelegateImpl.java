@@ -51,6 +51,11 @@ public class NodeDelegateImpl implements NodeDelegate {
       throw new BadBlockException("block time error");
     }
     try {
+      try {
+        dbManager.preValidateTransSign(block);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
       dbManager.pushBlock(block);
       if (!syncMode) {
         List<TransactionCapsule> trx = null;
