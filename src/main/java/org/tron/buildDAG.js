@@ -58,10 +58,12 @@ const buildDag = () => {
   for (let i = 0; i < que.length; i++) {
     const u = que[i]
     console.log(u)
-    for (let j = 0; j < adj[u]; j++) {
+    for (let j = 0; j < adj[u].length; j++) {
       const v = adj[u][j];
       par[v]--;
-      if (par[v] === 0) que.push(v)
+      if (par[v] === 0) {
+        que.push(v)
+      }
     }
   }
 }
